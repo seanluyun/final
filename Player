@@ -1,0 +1,34 @@
+import java.util.Random;
+
+/**
+ * Player represents a soccer player and extends Person.
+ */
+public class Player extends Person implements Playable {
+    private String position;
+    private int skillLevel;
+    
+    // Constructor with parameters
+
+    public Player(String name, String position, int skillLevel) {
+        super(name);
+        this.position = position;
+        this.skillLevel = skillLevel;
+    }
+
+    public int getSkillLevel() {
+        return skillLevel;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void displayStats() {
+        System.out.println(name + " | Position: " + position + " | Skill: " + skillLevel);
+    }
+// Conditional statement
+    public boolean attemptsGoal() {
+        Random rand = new Random();
+        return rand.nextInt(100) < skillLevel;
+    }
+}
