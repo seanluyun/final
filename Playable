@@ -1,0 +1,7 @@
+/**
+ * Playable interface requires displayStats() method, otherwise
+ * they would be unplayable and have no stats
+ */ 
+ public interface Playable {
+    void displayStats();
+}
