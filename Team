@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+
+/**
+ * Team contains a list of Players and manages team operations.
+ */
+public class Team implements Playable {
+    private String name;
+    // manage players on team
+    private ArrayList<Player> players;
+    // Constructor 
+    public Team(String name) {
+        this.name = name;
+        this.players = new ArrayList<>();
+    }
+// Method with parameters
+    public void addPlayer(Player player) {
+        players.add(player);
+    }
+// iteration
+    public void displayStats() {
+        System.out.println("Team: " + name);
+        for (Player p : players) {
+            p.displayStats();
+        }
+    }
+// iteration
+    public int getTotalSkill() {
+        int total = 0;
+        for (Player p : players) {
+            total += p.getSkillLevel();
+        }
+        return total;
+    }
+
+    public String getName() {
+        return name;
+    }
+    // ArrayList
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+}
