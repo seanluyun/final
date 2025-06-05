@@ -1,0 +1,54 @@
+import java.util.*;
+
+/**
+ * Game class runs the Soccer Manager Simulator.
+ * author Sean Luyun
+ */
+public class Game {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // User input: Team setup
+        System.out.print("Enter your team name: ");
+        String teamName = scanner.nextLine();
+        // Object created used by constructor
+        Team userTeam = new Team(teamName);
+        // Loop to make team (iteration)
+
+        System.out.println("Add 3 players to your team.");
+        for (int i = 0; i < 3; i++) {
+            System.out.print("Player " + (i + 1) + " name: ");
+            String name = scanner.nextLine();
+
+            System.out.print("Position (e.g. Forward, Midfielder): ");
+            String position = scanner.nextLine();
+
+            System.out.print("Skill level (1-100): ");
+            int skill = Integer.parseInt(scanner.nextLine());
+
+            Player p = new Player(name, position, skill);
+            // Object being used
+            userTeam.addPlayer(p);
+        }
+        // Output team to console
+
+        System.out.println("\nYour Team:");
+        userTeam.displayStats();
+
+        // Create an AI team to simulate against
+        Team cpuTeam = new Team("CodeHS FC");
+        cpuTeam.addPlayer(new Player("CPU1", "Forward", 99));
+        cpuTeam.addPlayer(new Player("CPU2", "Midfielder", 99));
+        cpuTeam.addPlayer(new Player("CPU3", "Defender", 50));
+        // Output CPU team to console
+
+        System.out.println("\nCPU Team:");
+        cpuTeam.displayStats();
+
+        // Simulate match
+        Match match = new Match(userTeam, cpuTeam);
+        match.simulateMatch();
+
+        scanner.close();
+    }
+}
